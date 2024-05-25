@@ -17,6 +17,12 @@
 
     @foreach ($tweets as $tweet)
         <p>
+            {{-- {{ dd("storage/{$tweet->user->profile_photo_path}") }} --}}
+            @if ($tweet->user->profile_photo_path)
+                <img src="{{ url("storage/{$tweet->user->profile_photo_path}" )}}" alt="{{ $tweet->user->name }}">
+            @else
+                <img src="{{ url('imgs/no-image.png') }}" alt="{{ $tweet->user->name }}">
+            @endif
             {{ $tweet->user->name }} -
             {{ $tweet->content }}
 
